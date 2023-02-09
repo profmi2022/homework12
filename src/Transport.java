@@ -16,6 +16,8 @@ public abstract class Transport <T extends Driver> implements Competing {
         System.out.println("Водитель " + driver.getName() + " управляет автомобилем " + brand + model + " и будет участвовать в заезде");
     }
 
+    public abstract void printType();
+
     public Transport(String brand, String model, Float engineVolume, T driver) {
 
         if (brand == null || brand.isEmpty()) {
@@ -32,7 +34,8 @@ public abstract class Transport <T extends Driver> implements Competing {
         setEngineVolume(engineVolume);
 
         setDriver(driver);
-    }
+
+      }
 
     public void setEngineVolume(Float engineVolume) {
         if (engineVolume <= 0) {

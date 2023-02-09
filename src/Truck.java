@@ -1,7 +1,26 @@
 public class Truck extends Transport<DriverC> {
 
-    public Truck(String brand, String model, Float engineVolume, DriverC driver) {
+    public Truck(String brand, String model, Float engineVolume, DriverC driver, Tonnage tonnage) {
         super(brand, model, engineVolume, driver);
+
+        this.tonnage = tonnage;
+    }
+
+    private Tonnage tonnage;
+
+    @Override
+    public void printType() {
+        if(tonnage != null){
+            System.out.println(tonnage);
+        }
+        else {
+            System.out.println("Данных по транспортному средству недостаточно");
+        }
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() +", " + tonnage;
     }
 
     @Override
@@ -26,5 +45,13 @@ public class Truck extends Transport<DriverC> {
     @Override
     public void maxSpeed() {
         System.out.println("Максимальная скорость грузовика " + brand + model + " 120 км/ч");
+    }
+
+    public Tonnage getTonnage() {
+        return tonnage;
+    }
+
+    public void setTonnage(Tonnage tonnage) {
+        this.tonnage = tonnage;
     }
 }

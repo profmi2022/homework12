@@ -1,10 +1,29 @@
 public class Bus extends Transport<DriverD> {
 
-    public Bus(String brand, String model, Float engineVolume, DriverD driver) {
+    public Bus(String brand, String model, Float engineVolume, DriverD driver, Capacity capacity) {
         super(brand, model, engineVolume, driver);
+
+        this.capacity = capacity;
+    }
+
+    private Capacity capacity;
+
+    @Override
+    public void printType() {
+        if(capacity != null){
+            System.out.println(capacity);
+        }
+        else {
+            System.out.println("Данных по транспортному средству недостаточно");
+        }
     }
 
     @Override
+    public String toString() {
+        return super.toString() + ", " + capacity;
+    }
+
+     @Override
     public void startMove() {
         System.out.println("Автобус " + brand + " " + model + " начал движение");
     }
@@ -28,4 +47,13 @@ public class Bus extends Transport<DriverD> {
     public void maxSpeed() {
         System.out.println("Максимальная скорость автобуса " + brand + model + " 120 км/ч");
     }
+
+    public Capacity getCapacity() {
+        return capacity;
+    }
+
+    public void setCapacity(Capacity capacity) {
+        this.capacity = capacity;
+    }
 }
+
