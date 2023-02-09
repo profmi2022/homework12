@@ -1,3 +1,5 @@
+package Car;
+
 public enum BodyType {
 
         SEDAN("Седан"),

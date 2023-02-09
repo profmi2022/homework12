@@ -1,3 +1,5 @@
+package Truck;
+
 public enum Tonnage {
 
     TONNAGE_N1(null, 3.5f),

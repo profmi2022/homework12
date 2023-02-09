@@ -1,3 +1,5 @@
+package Bus;
+
 public enum Capacity {
 
     ESPECIALLY_SMALL(null, 10),

@@ -1,9 +1,23 @@
+package Truck;
+import Exception.DiagnosticException;
+import Driver.DriverC;
+import Transport.Transport;
+
 public class Truck extends Transport<DriverC> {
 
     public Truck(String brand, String model, Float engineVolume, DriverC driver, Tonnage tonnage) {
         super(brand, model, engineVolume, driver);
 
         this.tonnage = tonnage;
+    }
+
+    @Override
+    public void doDiagnostic() throws DiagnosticException {
+        if(driver == null || ! driver.isHasLicense()) {
+            throw new DiagnosticException("Автомобиль " + brand + " " + model +
+                    " - Необходимо указать водителя с действующими правами!");
+        }
+        System.out.println("Диагностика выполнена успешно");
     }
 
     private Tonnage tonnage;

@@ -1,3 +1,8 @@
+package Car;
+import Exception.DiagnosticException;
+import Driver.DriverB;
+import Transport.Transport;
+
 public class Car extends Transport<DriverB> {
 
     private BodyType bodyType;
@@ -5,6 +10,15 @@ public class Car extends Transport<DriverB> {
     public Car(String brand, String model, Float engineVolume, DriverB driver, BodyType bodyType) {
         super(brand, model, engineVolume, driver);
         this.bodyType = bodyType;
+    }
+
+    @Override
+    public void doDiagnostic() throws DiagnosticException {
+        if(driver == null || ! driver.isHasLicense()) {
+            throw new DiagnosticException("Автомобиль " + brand + " " + model +
+                    " - Необходимо указать водителя с действующими правами!");
+        }
+        System.out.println("Диагностика выполнена успешно");
     }
 
     @Override

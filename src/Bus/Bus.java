@@ -1,3 +1,8 @@
+package Bus;
+import Exception.DiagnosticException;
+import Driver.DriverD;
+import Transport.Transport;
+
 public class Bus extends Transport<DriverD> {
 
     public Bus(String brand, String model, Float engineVolume, DriverD driver, Capacity capacity) {
@@ -5,6 +10,12 @@ public class Bus extends Transport<DriverD> {
 
         this.capacity = capacity;
     }
+
+    @Override
+    public void doDiagnostic() {
+        System.out.println("Автобус не проходит диагностику");
+    }
+
 
     private Capacity capacity;
 

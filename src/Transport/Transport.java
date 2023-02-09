@@ -1,3 +1,7 @@
+package Transport;
+import Exception.DiagnosticException;
+import Driver.Driver;
+
 public abstract class Transport <T extends Driver> implements Competing {
 
     protected final String brand;
@@ -17,6 +21,8 @@ public abstract class Transport <T extends Driver> implements Competing {
     }
 
     public abstract void printType();
+
+    public abstract void doDiagnostic() throws DiagnosticException;
 
     public Transport(String brand, String model, Float engineVolume, T driver) {
 
