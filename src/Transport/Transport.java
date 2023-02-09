@@ -1,3 +1,7 @@
+package Transport;
+import Exception.DiagnosticException;
+import Driver.Driver;
+
 public abstract class Transport <T extends Driver> implements Competing {
 
     protected final String brand;
@@ -16,6 +20,10 @@ public abstract class Transport <T extends Driver> implements Competing {
         System.out.println("Водитель " + driver.getName() + " управляет автомобилем " + brand + model + " и будет участвовать в заезде");
     }
 
+    public abstract void printType();
+
+    public abstract void doDiagnostic() throws DiagnosticException;
+
     public Transport(String brand, String model, Float engineVolume, T driver) {
 
         if (brand == null || brand.isEmpty()) {
@@ -32,7 +40,8 @@ public abstract class Transport <T extends Driver> implements Competing {
         setEngineVolume(engineVolume);
 
         setDriver(driver);
-    }
+
+      }
 
     public void setEngineVolume(Float engineVolume) {
         if (engineVolume <= 0) {
