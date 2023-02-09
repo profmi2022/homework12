@@ -1,7 +1,25 @@
 public class Car extends Transport<DriverB> {
 
-    public Car(String brand, String model, Float engineVolume, DriverB driver) {
+    private BodyType bodyType;
+
+    public Car(String brand, String model, Float engineVolume, DriverB driver, BodyType bodyType) {
         super(brand, model, engineVolume, driver);
+        this.bodyType = bodyType;
+    }
+
+    @Override
+    public void printType() {
+        if(bodyType != null){
+            System.out.println(bodyType);
+        }
+        else {
+            System.out.println("Данных по транспортному средству недостаточно");
+        }
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() + ", " + bodyType;
     }
 
     @Override
@@ -26,5 +44,13 @@ public class Car extends Transport<DriverB> {
     @Override
     public void maxSpeed() {
         System.out.println("Максимальная скорость автомобиля " + brand + model + " 120 км/ч");
+    }
+
+    public BodyType getBodyType() {
+        return bodyType;
+    }
+
+    public void setBodyType(BodyType bodyType) {
+        this.bodyType = bodyType;
     }
 }
