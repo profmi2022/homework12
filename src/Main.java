@@ -13,7 +13,10 @@ import Truck.Tonnage;
 import Exception.DiagnosticException;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+
 import Transport.ServiceStation;
 
 public class Main {
@@ -139,6 +142,28 @@ public class Main {
         System.out.println("\nЗапускаем техобслуживание: \n");
 
         serviceStation.doInspection();
+
+//Множество водителей
+        System.out.println("\nМножество водителей\n");
+
+        Set <Driver> driverSet = new HashSet<Driver>();
+
+        driverSet.add(car1.getDriver());
+        driverSet.add(car2.getDriver());
+        driverSet.add(car3.getDriver());
+        driverSet.add(bus1.getDriver());
+        driverSet.add(bus2.getDriver());
+        driverSet.add(bus3.getDriver());
+        driverSet.add(truck1.getDriver());
+        driverSet.add(truck2.getDriver());
+        driverSet.add(truck3.getDriver());
+        driverSet.add(truck2.getDriver());
+        driverSet.add(truck1.getDriver());
+
+        for (Driver driver : driverSet) {
+            System.out.println(driver);
+        }
+
     }
 }
 
