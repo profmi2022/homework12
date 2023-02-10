@@ -2,13 +2,19 @@ import Bus.Bus;
 import Bus.Capacity;
 import Car.Car;
 import Car.BodyType;
+import Driver.Driver;
 import Driver.DriverB;
 import Driver.DriverC;
 import Driver.DriverD;
+import Transport.Mechanic;
+import Transport.Transport;
 import Truck.Truck;
 import Truck.Tonnage;
 import Exception.DiagnosticException;
 
+import java.util.ArrayList;
+import java.util.List;
+import Transport.ServiceStation;
 
 public class Main {
 
@@ -48,33 +54,91 @@ public class Main {
         System.out.println(truck3);
 
         // Диагностика
-        System.out.println("\nДиагностика\n");
+//        System.out.println("\nДиагностика\n");
+//
+//        Car car4 = new Car("Москвич", "412", 2f, null, BodyType.CROSSOVER);
+//        Truck truck4 = new Truck("DAEWOO", " Caterpillar", 4f, new DriverC("Сидоров", false, 5), Tonnage.TONNAGE_N1);
+//
+//        try {
+//            car1.doDiagnostic();
+//        } catch (DiagnosticException e) {
+//            e.printStackTrace();
+//        }
+//
+//            bus2.doDiagnostic();
+//
+//        try {
+//            truck3.doDiagnostic();
+//        } catch (DiagnosticException e) {
+//            e.printStackTrace();
+//        }
+//        try {
+//            car4.doDiagnostic();
+//        } catch (DiagnosticException e) {
+//            e.printStackTrace();
+//        }
+//        try {
+//            truck4.doDiagnostic();
+//        } catch (DiagnosticException e) {
+//            e.printStackTrace();
+//        }
 
-        Car car4 = new Car("Москвич", "412", 2f, null, BodyType.CROSSOVER);
-        Truck truck4 = new Truck("DAEWOO", " Caterpillar", 4f, new DriverC("Сидоров", false, 5), Tonnage.TONNAGE_N1);
 
-        try {
-            car1.doDiagnostic();
-        } catch (DiagnosticException e) {
-            e.printStackTrace();
-        }
+// Механики
 
-            bus2.doDiagnostic();
+        List<Transport> vehicles = new ArrayList<>();
 
-        try {
-            truck3.doDiagnostic();
-        } catch (DiagnosticException e) {
-            e.printStackTrace();
+        vehicles.add(car1);
+        vehicles.add(bus3);
+        vehicles.add(truck2);
+
+        List<Driver> drivers = new ArrayList<>();
+
+        drivers.add(car1.getDriver());
+        drivers.add(car2.getDriver());
+        drivers.add(car3.getDriver());
+        drivers.add(bus1.getDriver());
+        drivers.add(bus2.getDriver());
+        drivers.add(bus3.getDriver());
+        drivers.add(truck1.getDriver());
+        drivers.add(truck2.getDriver());
+        drivers.add(truck3.getDriver());
+
+        Mechanic mechanic1 = new Mechanic("Углов Максим Самсонович", "Индезит");
+        Mechanic mechanic2 = new Mechanic("Пирогов Сидор Матвеевич", "Сатар");
+        Mechanic mechanic3 = new Mechanic("Колесов Захар Петрович", "Бозон");
+        Mechanic mechanic4 = new Mechanic("Кирюхин Павел Эдмундович", "Карт");
+        Mechanic mechanic5 = new Mechanic("Сеточкин Кирилл Андреевич", "Донал");
+        Mechanic mechanic6 = new Mechanic("Штампов Леонид Дмитриевич", "Кирта");
+
+        car1.addMechanic(mechanic2);
+        car1.addMechanic(mechanic5);
+        bus3.addMechanic(mechanic4);
+        bus3.addMechanic(mechanic1);
+        truck2.addMechanic(mechanic6);
+        truck2.addMechanic(mechanic3);
+
+        for (Transport vehicle : vehicles) {
+            System.out.println("\nАвтомобиль: " + vehicle +
+                    "\nМеханики: ");
+            for (Object mechanic : vehicle.getMechanics()) {
+                System.out.println(mechanic);
+            }
         }
-        try {
-            car4.doDiagnostic();
-        } catch (DiagnosticException e) {
-            e.printStackTrace();
-        }
-        try {
-            truck4.doDiagnostic();
-        } catch (DiagnosticException e) {
-            e.printStackTrace();
-        }
+//Станция техобслуживания
+        System.out.println("\nСтанция техобслуживания\n");
+
+        ServiceStation serviceStation = new ServiceStation();
+
+        serviceStation.addVehicle(car1);
+        serviceStation.addVehicle(car3);
+        serviceStation.addVehicle(bus1);
+        serviceStation.addVehicle(truck1);
+        serviceStation.addVehicle(truck3);
+
+        System.out.println("\nЗапускаем техобслуживание: \n");
+
+        serviceStation.doInspection();
     }
 }
+

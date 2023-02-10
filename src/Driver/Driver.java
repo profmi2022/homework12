@@ -12,6 +12,11 @@ public abstract class Driver {
         this.experienceYears = experienceYears;
     }
 
+    @Override
+    public String toString() {
+        return name;
+    }
+
     public String getName() {
         return name;
     }

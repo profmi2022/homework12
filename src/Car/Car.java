@@ -18,7 +18,7 @@ public class Car extends Transport<DriverB> {
             throw new DiagnosticException("Автомобиль " + brand + " " + model +
                     " - Необходимо указать водителя с действующими правами!");
         }
-        System.out.println("Диагностика выполнена успешно");
+        System.out.println("Диагностика " + brand + " " + model + " выполнена успешно");
     }
 
     @Override

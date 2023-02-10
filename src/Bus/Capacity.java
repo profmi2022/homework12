@@ -8,8 +8,8 @@ public enum Capacity {
     BIG(60, 80),
     ESPECIALLY_BIG(100, 120);
 
-    private Integer lowerBound;
-    private Integer upperBound;
+    private final Integer lowerBound;
+    private final Integer upperBound;
 
     Capacity(Integer lowerBound, Integer upperBound) {
         this.lowerBound = lowerBound;

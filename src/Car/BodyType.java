@@ -17,7 +17,7 @@ public enum BodyType {
             return "тип кузова: " + name;
         }
 
-        public String name;
+        private final String name;
 
         BodyType(String name) {
             this.name = name;
