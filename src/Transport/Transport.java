@@ -4,6 +4,7 @@ import Driver.Driver;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public abstract class Transport <T extends Driver> implements Competing {
 
@@ -47,6 +48,19 @@ public abstract class Transport <T extends Driver> implements Competing {
         setDriver(driver);
 
       }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Transport<?> transport = (Transport<?>) o;
+        return Objects.equals(brand, transport.brand) && Objects.equals(model, transport.model) && Objects.equals(engineVolume, transport.engineVolume);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(brand, model, engineVolume);
+    }
 
     public void setEngineVolume(Float engineVolume) {
         if (engineVolume <= 0) {

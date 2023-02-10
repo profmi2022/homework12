@@ -12,10 +12,7 @@ import Truck.Truck;
 import Truck.Tonnage;
 import Exception.DiagnosticException;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 import Transport.ServiceStation;
 
@@ -163,7 +160,23 @@ public class Main {
         for (Driver driver : driverSet) {
             System.out.println(driver);
         }
+//Список механиков в map
+        System.out.println("\nСписок механиков в map\n");
 
+        Map<Transport, Mechanic> transportMechanicMap = new HashMap<>();
+
+        for (Transport vehicle : vehicles) {
+            for (int i = 0; i < vehicle.getMechanics().size(); i++) {
+                transportMechanicMap.put(vehicle, (Mechanic) vehicle.getMechanics().get(i));
+            }
+        }
+//        System.out.println(transportMechanicMap);
+
+        for (Map.Entry<Transport, Mechanic> transportMechanicEntry : transportMechanicMap.entrySet()) {
+            System.out.println("Автомобиль " + transportMechanicEntry.getKey().getBrand() + " " +
+                    transportMechanicEntry.getKey().getModel() +
+                    ", Механик " + transportMechanicEntry.getValue().getName());
+        }
     }
 }
 
