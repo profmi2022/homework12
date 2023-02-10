@@ -1,9 +1,18 @@
+package Transport;
+import Exception.DiagnosticException;
+import Driver.Driver;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public abstract class Transport <T extends Driver> implements Competing {
 
     protected final String brand;
     protected final String model;
     protected Float engineVolume;
     protected T driver;
+    protected final List<Mechanic> mechanics = new ArrayList<>();
+
 
     @Override
     public String toString() {
@@ -15,6 +24,10 @@ public abstract class Transport <T extends Driver> implements Competing {
     public void printInfo(){
         System.out.println("Водитель " + driver.getName() + " управляет автомобилем " + brand + model + " и будет участвовать в заезде");
     }
+
+    public abstract void printType();
+
+    public abstract void doDiagnostic() throws DiagnosticException;
 
     public Transport(String brand, String model, Float engineVolume, T driver) {
 
@@ -32,7 +45,8 @@ public abstract class Transport <T extends Driver> implements Competing {
         setEngineVolume(engineVolume);
 
         setDriver(driver);
-    }
+
+      }
 
     public void setEngineVolume(Float engineVolume) {
         if (engineVolume <= 0) {
@@ -55,6 +69,17 @@ public abstract class Transport <T extends Driver> implements Competing {
 
     public void setDriver(T driver) {
         this.driver = driver;
+    }
+
+    public T getDriver() {
+        return driver;
+    }
+
+    public List<Mechanic> getMechanics() {
+        return mechanics;
+    }
+    public void addMechanic(Mechanic mechanic){
+       mechanics.add(mechanic);
     }
 
     public abstract void startMove();
