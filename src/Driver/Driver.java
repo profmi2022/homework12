@@ -1,3 +1,5 @@
+package Driver;
+
 public abstract class Driver {
 
     protected String name;
@@ -8,6 +10,11 @@ public abstract class Driver {
         this.name = name;
         this.hasLicense = hasLicense;
         this.experienceYears = experienceYears;
+    }
+
+    @Override
+    public String toString() {
+        return name;
     }
 
     public String getName() {
